@@ -25,7 +25,7 @@ template <typename t1> t1 getCin(t1 x) {
 class Chat
 {
 	bool work_ = false; // чат работает
-	bool checkPassword = false; // пароль пользователя проверен
+	bool checkPassw_ = false; // пароль пользователя проверен
 	int indexUser = -1; //пользователь в сети
 	vector <User> users_;
 	vector <Messege> messeges_;

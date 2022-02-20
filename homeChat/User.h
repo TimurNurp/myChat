@@ -14,7 +14,8 @@ class User
 	string tmOnline_; //время выхода пользователя
 
 public:
-	
+	User(const string& login);
+
 	User(const string& login, const string& password, string& name); 
 	
 	~User() = default;
