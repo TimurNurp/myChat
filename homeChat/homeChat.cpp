@@ -1,24 +1,13 @@
 ﻿// homeChat.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 
-#include "User.h"
-#include <iostream>
+#include "Chat.h"
+
 
 int main()
 {
-	string log("login"), pas("1"), names("tim");
+	Chat chat1(true);
 
-	User user1( log, pas, names);
-	
-	user1.setStatus("qwerty");
-	user1.setTmOnline();
-
-	cout << user1.getLogin() << endl;
-	cout << user1.getPassword() << endl;
-	cout << user1.getInfo(1) << endl;
-	cout << user1.getInfo(0) << endl;
-	cout << user1.getInfo(3) << endl;
-	cout << user1.getTmOnline() << endl;
 
 	return 0;
 }

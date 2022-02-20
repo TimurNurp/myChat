@@ -8,10 +8,10 @@ using namespace std;
 class User
 {
 	const string login_;
-	string password_;
-	string name_;
-	string status_;
-	string tmOnline_;
+	string password_; 
+	string name_;	//имя пользователя
+	string status_; //статус пользователя
+	string tmOnline_; //время выхода пользователя
 
 public:
 	
