@@ -8,6 +8,7 @@ int main()
 {
 	Chat chat1(true);
 
+	chat1.userMenu();
 
 	return 0;
 }

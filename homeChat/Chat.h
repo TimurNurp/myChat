@@ -2,8 +2,9 @@
 #include "Messege.h"
 #include <iostream>
 #include <vector>
+#include <typeinfo>	
 
-template <typename t1> t1 getCin(t1 x) {
+/*template <typename t1> t1 getCin(t1 x) {
 
 	while (true)
 	{
@@ -16,17 +17,18 @@ template <typename t1> t1 getCin(t1 x) {
 		}
 		else
 		{
-			cin.ignore(32767, '\n');
+			if (typeid(x).name() != "string")
+				cin.ignore(32767, '\n');
 			return x;
 		}
 	}
-}
+}*/
 
 class Chat
 {
 	bool work_ = false; // чат работает
 	bool checkPassw_ = false; // пароль пользователя проверен
-	int indexUser = -1; //пользователь в сети
+	size_t indexUser = 0; //пользователь в сети
 	vector <User> users_;
 	vector <Messege> messeges_;
 
@@ -34,14 +36,14 @@ class Chat
 	public:
 		Chat(bool work);
 		~Chat() = default;
-
-		//template <typename t> t getCin(t x);
-
+		
 		void mainMenu(); //вызов главного меню
 
 		void enterMenu(); //идентификация пользователя
 
 		void regMenu(); //меню регистрации
+
+		void userMenu(); // меню пользователя
 
 		
 };
