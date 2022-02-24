@@ -29,7 +29,7 @@ class Chat
 	bool work_ = false; // чат работает
 	bool checkPassw_ = false; // пароль пользователя проверен
 	size_t indexUser = 0; //пользователь в сети
-	vector <User> users_;
+	vector <User> users_ ;
 	vector <Message> messages_;
 
 	void mainMenu(); //вызов главного меню

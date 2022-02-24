@@ -2,18 +2,22 @@
 
 Chat::Chat(bool work) : work_(work)
 {
+	User first("all");
+
+	users_.push_back(first);
+	
 	mainMenu();
 
 }
 
 void Chat::mainMenu()
-{
+{		int choose = 0;
+
 	do
 	{
 		cout << "Hello, friend! Choose an action to continue:" << endl;
 		cout << "1 - login \n2 - registration \n3 - exit" << endl;
 
-		int choose = 0;
 
 		cin >> choose;
 		cin.ignore(32767, '\n');
@@ -34,6 +38,12 @@ void Chat::mainMenu()
 		if (checkPassw_)
 			userMenu();
 
+		if (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(32767, '\n');
+		}
+
 	} while (work_);
 
 }
@@ -53,7 +63,7 @@ void Chat::enterMenu()
 	{
 		if (buf == users_.at(i).getLogin())
 		{
-			indexUser = i; //запоминает подход€щий индекс
+			indexUser = i;  //запоминает подход€щий индекс!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			buf.clear(); //очищаем буферную переменную
 			break;
 		}
@@ -73,6 +83,7 @@ void Chat::enterMenu()
 				buf.clear(); //очищаем буферную переменную
 
 				return; 
+
 			}
 		} while (buf != "exit");	
 	} 
@@ -126,6 +137,8 @@ void Chat::regMenu()
 
 	getline(cin, buf);
 
+	newUser.setPassword("", buf);
+
 	cout << "Good password!\nEnter your name:" << endl;
 
 	getline(cin, buf);
@@ -136,66 +149,72 @@ void Chat::regMenu()
 
 	cout << "Congratulations, you have successfully registered " << endl;
 
-	indexUser = users_.size(); // пользователь в сети 
+	indexUser = users_.size() - 1; // пользователь в сети 
 	checkPassw_ = true; //пароль проверен
 	
 }
 
 void Chat::userMenu()
 {
-	cout <<	'\t' << users_.at(indexUser).getLogin() << endl;
-	cout << "This is your user menu, " << users_.at(indexUser).getInfo(0) << endl;
-	cout << "Your current status: " << users_.at(indexUser).getInfo(1) << endl;
-	cout <<	"Please, enter your login or word 'exit' for turn of in Mein menu : " << endl;
-	cout << "\tChoose an action to continue:\n1 - write Message;\n2 - read Message;\n3 - change status;\n4 - settings;\n5 - logout;\n6 - exit." << endl;
-	
 	int choose = 0;
-	std::string buf;
 
-	cin >> choose;
-	cin.ignore(32767, '\n');
+	string buf;
 
-	switch (choose)
+	do
 	{
-	case 1:
-		sendMessage();
-		break;
-
-	case 2:
-		readMessage();
-		break;
-
-	case 3:
+		cout << '\t' << users_.at(indexUser).getLogin() << endl;
+		cout << "This is your user menu, " << users_.at(indexUser).getInfo(0) << endl;
 		cout << "Your current status: " << users_.at(indexUser).getInfo(1) << endl;
-		cout << "Enter new status:" << endl;
+		cout << "Please, enter your login or word 'exit' for turn of in Mein menu : " << endl;
+		cout << "\tChoose an action to continue:\n1 - write Message;\n2 - read Message;\n3 - change status;\n4 - settings;\n5 - logout;\n6 - exit." << endl;
 
-		getline(cin, buf);
+		cin >> choose;
+		cin.ignore(32767, '\n');
 
-		users_.at(indexUser).setStatus(buf);
-		
-		break;
-	case 4:
-		settings();
-		break;
+		switch (choose)
+		{
+		case 1:
+			sendMessage();
+			break;
 
-	case 5:
-		indexUser = 0;
-		
-		checkPassw_ = false;
-		
-	default:
+		case 2:
+			readMessage();
+			break;
 
-		work_ = false;
-		return;
+		case 3:
+			cout << "Your current status: " << users_.at(indexUser).getInfo(1) << endl;
+			cout << "Enter new status:" << endl;
 
-	}
+			getline(cin, buf);
+
+			users_.at(indexUser).setStatus(buf);
+
+			break;
+		case 4:
+			settings();
+			break;
+
+		case 5:
+			indexUser = 0;
+
+			checkPassw_ = false;
+
+			return;
+		default:
+
+			work_ = false;
+			return;
+
+		}
+
+	} while (true);
 }
 
 void Chat::sendMessage()
 {	
 	cout << "Choose why write message:" << endl;
 
-	for (size_t i = 0; i > users_.size(); ++i)
+	for (size_t i = 0; i < users_.size(); ++i)
 		cout << i << ".\t" << users_.at(i).getLogin() << endl;
 	
 	size_t choose;
@@ -221,9 +240,66 @@ void Chat::readMessage()
 {
 	cout << "Your incoming messages:" << endl;
 	
-	for (rsize_t i = 0; i > messages_.size(); ++i)
-		if (messages_.at(i).getTo() == users_.at(indexUser).getLogin())
+	for (rsize_t i = 0; i < messages_.size(); ++i)
+		if (messages_.at(i).getTo() == users_.at(indexUser).getLogin() || messages_.at(i).getTo() == users_.at(0).getLogin())
 			cout << messages_.at(i).getFrom() << ":\n" << messages_.at(i).getText() << endl;
 
 	cout << "Messages are over" << endl;
+}
+
+void Chat::settings()
+{
+	int choose = 0;
+	string buf1;
+	string buf2;
+	do
+	{
+		cout << "\t Settings menu\nChoose an action:\n1 - Change name;\n2 - Change password;\n3 - Exit." << endl;
+		cin >> choose;
+		cin.ignore(32767, '\n');
+
+		switch (choose)
+		{
+		case 1:
+			cout << "Enter new name:" << endl;
+
+			getline(cin, buf1);
+
+			users_.at(indexUser).setName(buf1);
+
+			cout << "Your new name:" << users_.at(indexUser).getInfo(0) << endl;
+
+			break;
+
+		case 2:
+			cout << "Enter old password:" << endl;
+
+			getline(cin, buf1);
+
+			cout << "Enter new password:" << endl;
+
+			getline(cin, buf2);
+
+			if (users_.at(indexUser).setPassword(buf1, buf2))
+			{
+				cout << "password not changed." << endl;
+			}
+			else
+			{
+				cout << "password changed." << endl;
+			}
+
+			break;
+
+		default:
+			return;
+		}
+
+		if (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(32767, '\n');
+		}
+		
+	} while (true);
 }
