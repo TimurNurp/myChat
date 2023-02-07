@@ -1,5 +1,6 @@
 #pragma once
 #include <fstream>
+#include "Message.h"
 
 class Logger
 {
@@ -9,14 +10,14 @@ class Logger
        ~Logger();
      
 
-        // Запрещаем копирование и присваивание
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
        Logger(const Logger&) = delete;
        Logger& operator=(const Logger&) = delete;
 
-       void write(const char* str);
+       void write(Message& str);
 
 
     private:
-        FILE* file;
+        std::ofstream file;
  };
 

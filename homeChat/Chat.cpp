@@ -54,33 +54,33 @@ void Chat::enterMenu()
 	
 	std::string buf;
 		
-	getline(cin, buf); //ввод логина пользователя
+	getline(cin, buf); //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 	if (buf == "exit")
 		return;
 
-	for (size_t i = 1; i < users_.size(); ++i) //проверка введеного логина в базе
+	for (size_t i = 1; i < users_.size(); ++i) //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 	{
 		if (buf == users_.at(i).getLogin())
 		{
-			indexUser = i;  //запоминает подходящий индекс!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			buf.clear(); //очищаем буферную переменную
+			indexUser = i;  //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			buf.clear(); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			break;
 		}
 	}
 	
-	if (indexUser != 0) //если нашли пользователя с подходящим логином, то просим ввести пароль
+	if (indexUser != 0) //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	{
 		cout << "Please, enter your password or word 'exit' for turn of in Mein menu:" << endl;
 
 		do
 		{
-			getline(cin, buf); //ввод пароля пользователя 
+			getline(cin, buf); //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
 			
-			if (users_.at(indexUser).getPassword() == buf) // проверка пароля
+			if (users_.at(indexUser).getPassword() == buf) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			{
 				checkPassw_ = true;
-				buf.clear(); //очищаем буферную переменную
+				buf.clear(); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 				return; 
 
@@ -88,7 +88,7 @@ void Chat::enterMenu()
 		} while (buf != "exit");	
 	} 
 
-	if (indexUser == 0) // если не нашли подходящий логин, отправляем пользователя регестрироваться
+	if (indexUser == 0) // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		regMenu();
 }
 
@@ -96,8 +96,8 @@ void Chat::regMenu()
 {
 	cout << "\tWelcome in menu registration.\nFor exit the menu enter word 'exit'.\nChoose login and enter it:" << endl;
 
-	bool exitFlag = true; // флаг для выхода из циклов
-	std::string buf; //буферная переменная для ввода!!!
+	bool exitFlag = true; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	std::string buf; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ!!!
 	
 	do
 	{
@@ -111,12 +111,12 @@ void Chat::regMenu()
 		}
 		else
 		{
-			for (size_t i = 0; i < users_.size(); ++i) //проверка введеного логина в базе
+			for (size_t i = 0; i < users_.size(); ++i) //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 			{
 				if (buf == users_.at(i).getLogin())
 				{
 					cout << "There is already a user with this login. Try again:" << endl;
-					buf.clear(); //очищаем буферную переменную
+					buf.clear(); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 					exitFlag = true;
 					break;
 				}
@@ -130,7 +130,7 @@ void Chat::regMenu()
 
 	} while (exitFlag);
 
-	User newUser(buf); //буферный пользователь !!!
+	User newUser(buf); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ !!!
 	
 	cout << "Okey. Your login: " << newUser.getLogin() << endl;
 	cout << "Choose security password:" << endl;
@@ -145,12 +145,12 @@ void Chat::regMenu()
 
 	newUser.setName(buf);
 
-	users_.push_back(newUser); // добавили нового пользователя в базу
+	users_.push_back(newUser); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 
 	cout << "Congratulations, you have successfully registered " << endl;
 
-	indexUser = users_.size() - 1; // пользователь в сети 
-	checkPassw_ = true; //пароль проверен
+	indexUser = users_.size() - 1; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ 
+	checkPassw_ = true; //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	
 }
 
@@ -232,15 +232,19 @@ void Chat::sendMessage()
 	Message newMessage(users_.at(indexUser).getLogin(), users_.at(choose).getLogin(), buf);
 
 	messages_.push_back(newMessage);
-
+		
 	cout << "Message sent" << endl;
+
+	Logger logFile("logs.txt");
+
+		logFile.write( newMessage );
 }
 
 void Chat::readMessage()
 {
 	cout << "Your incoming messages:" << endl;
 	
-	for (rsize_t i = 0; i < messages_.size(); ++i)
+	for (size_t i = 0; i < messages_.size(); ++i)
 		if (messages_.at(i).getTo() == users_.at(indexUser).getLogin() || messages_.at(i).getTo() == users_.at(0).getLogin())
 			cout << messages_.at(i).getFrom() << ":\n" << messages_.at(i).getText() << endl;
 
