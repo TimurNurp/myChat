@@ -9,6 +9,7 @@ class Messege
 public:
 
 	Messege(const User& from, const User& to, const string& text);
+	
 	~Messege() = default;
 
 };

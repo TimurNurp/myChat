@@ -1,6 +1,8 @@
 #pragma once
 #include <fstream>
+#include <iostream>
 #include "Message.h"
+
 
 class Logger
 {
@@ -15,9 +17,9 @@ class Logger
        Logger& operator=(const Logger&) = delete;
 
        void write(Message& str);
-
+       void read(int& countMsg);
 
     private:
-        std::ofstream file;
+        std::fstream file;
  };
 
