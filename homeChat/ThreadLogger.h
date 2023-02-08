@@ -1,6 +1,7 @@
 #include "Logger.h"
 #include <thread>
 #include <shared_mutex>
+#include <mutex>
 
 class ThreadLogger : public Logger
 {
@@ -8,5 +9,6 @@ class ThreadLogger : public Logger
     void secureRead(int& countMsg);
 
     private:
-      shared_mutex shared_mutex;
+
+      mutable std::shared_mutex shared_mutex_;
 }
