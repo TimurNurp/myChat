@@ -1,5 +1,6 @@
 #pragma once
 #include "Message.h"
+#include "Logger.h"
 #include <iostream>
 #include <vector>
 #include <typeinfo>	
@@ -26,17 +27,17 @@
 
 class Chat
 {
-	bool work_ = false; // чат работает
-	bool checkPassw_ = false; // пароль пользователя проверен
-	size_t indexUser = 0; //пользователь в сети
+	bool work_ = false; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	bool checkPassw_ = false; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	size_t indexUser = 0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
 	vector <User> users_ ;
 	vector <Message> messages_;
 
-	void mainMenu(); //вызов главного меню
+	void mainMenu(); //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 
-	void enterMenu(); //идентификация пользователя
+	void enterMenu(); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
-	void regMenu(); //меню регистрации
+	void regMenu(); //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 
 
@@ -50,7 +51,7 @@ class Chat
 		Chat(bool work);
 		~Chat() = default;
 
-	void userMenu(); // меню пользователя	
+	void userMenu(); // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ	
 		
 		
 };
