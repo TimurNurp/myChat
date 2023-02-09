@@ -13,5 +13,5 @@ class ThreadLogger : public Logger
     void secureRead( int& countMsg);
 
   private:
-      mutable std::mutex mutex_;
+      mutable std::shared_mutex mutex_;
 };

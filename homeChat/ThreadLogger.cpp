@@ -17,10 +17,10 @@ void ThreadLogger::secureWrite(Message& str)
 
 void ThreadLogger::secureRead(int& countMsg)
 {
-    mutex_.lock();
+    mutex_.lock_shared();
     
     read(countMsg);
 
-    mutex_.unlock();
+    mutex_.unlock_shared();
 
 }

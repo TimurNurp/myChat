@@ -235,9 +235,13 @@ void Chat::sendMessage()
 
 	cout << "Message sent" << endl;
 
+
 	ThreadLogger logFile("logs.txt");
-	logFile.secureWrite(newMessage);
+		
+	std::thread th1([&logFile,&newMessage]() {logFile.secureWrite(newMessage); });
+	th1.join();
 }
+
 
 void Chat::readMessage()
 {
@@ -253,7 +257,8 @@ void Chat::readMessage()
 	ThreadLogger logFile("logs.txt");
 	
 	int count(2);
-	logFile.secureRead(count);
+	std::thread th1([&logFile, &count]() { logFile.secureRead(count); });
+	th1.join();
 
 }
 
