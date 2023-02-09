@@ -1,19 +1,26 @@
 #include "ThreadLogger.h"
 
+ThreadLogger::ThreadLogger(const char* filename): Logger(filename)
+{
+;
+}
+
+
 void ThreadLogger::secureWrite(Message& str)
 {
-    shared_mutex_.lock();
+    mutex_.lock();
     
     write(str);
 
-    shared_mutex_.unlock();
+    mutex_.unlock();
 }
 
 void ThreadLogger::secureRead(int& countMsg)
 {
-    shared_mutex_.shared_lock();
+    mutex_.lock();
     
     read(countMsg);
 
-    shared_mutex_.shared_unlock();
+    mutex_.unlock();
+
 }

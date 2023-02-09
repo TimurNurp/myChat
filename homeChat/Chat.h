@@ -1,6 +1,6 @@
 #pragma once
 #include "Message.h"
-#include "Logger.h"
+#include "ThreadLogger.h"
 #include <iostream>
 #include <vector>
 #include <typeinfo>	
@@ -30,8 +30,8 @@ class Chat
 	bool work_ = false; // ��� ��������
 	bool checkPassw_ = false; // ������ ������������ ��������
 	size_t indexUser = 0; //������������ � ����
-	vector <User> users_ ;
-	vector <Message> messages_;
+	std::vector <User> users_ ;
+	std::vector <Message> messages_;
 
 	void mainMenu(); //����� �������� ����
 

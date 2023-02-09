@@ -235,9 +235,8 @@ void Chat::sendMessage()
 		
 	cout << "Message sent" << endl;
 
-	Logger logFile("logs.txt");
-
-		logFile.write( newMessage );
+	ThreadLogger logFile("logs.txt");
+	logFile.secureWrite(newMessage);
 }
 
 void Chat::readMessage()
@@ -249,6 +248,12 @@ void Chat::readMessage()
 			cout << messages_.at(i).getFrom() << ":\n" << messages_.at(i).getText() << endl;
 
 	cout << "Messages are over" << endl;
+
+	ThreadLogger logFile("logs.txt");
+	
+	int count(2);
+	logFile.secureRead(count);
+
 }
 
 void Chat::settings()

@@ -12,7 +12,7 @@ class Logger
        ~Logger();
      
 
-        // ��������� ����������� � ������������
+        // 
        Logger(const Logger&) = delete;
        Logger& operator=(const Logger&) = delete;
 
