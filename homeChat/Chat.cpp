@@ -54,33 +54,33 @@ void Chat::enterMenu()
 	
 	std::string buf;
 		
-	getline(cin, buf); //���� ������ ������������
+	getline(cin, buf); //ввод логина пользователѝ
 
 	if (buf == "exit")
 		return;
 
-	for (size_t i = 1; i < users_.size(); ++i) //�������� ��������� ������ � ����
+	for (size_t i = 1; i < users_.size(); ++i) //проверка введеного логина в базе
 	{
 		if (buf == users_.at(i).getLogin())
 		{
-			indexUser = i;  //���������� ���������� ������!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			buf.clear(); //������� �������� ����������
+			indexUser = i;  //запоминает подходѝщий индекѝ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			buf.clear(); //очищаем буферную переменную
 			break;
 		}
 	}
 	
-	if (indexUser != 0) //���� ����� ������������ � ���������� �������, �� ������ ������ ������
+	if (indexUser != 0) //еѝли нашли пользователѝ ѝ подходѝщим логином, то проѝим ввеѝти пароль
 	{
 		cout << "Please, enter your password or word 'exit' for turn of in Mein menu:" << endl;
 
 		do
 		{
-			getline(cin, buf); //���� ������ ������������ 
+			getline(cin, buf); //ввод паролѝ пользователѝ 
 			
-			if (users_.at(indexUser).getPassword() == buf) // �������� ������
+			if (users_.at(indexUser).getPassword() == buf) // проверка паролѝ
 			{
 				checkPassw_ = true;
-				buf.clear(); //������� �������� ����������
+				buf.clear(); //очищаем буферную переменную
 
 				return; 
 
@@ -88,7 +88,7 @@ void Chat::enterMenu()
 		} while (buf != "exit");	
 	} 
 
-	if (indexUser == 0) // ���� �� ����� ���������� �����, ���������� ������������ ����������������
+	if (indexUser == 0) // еѝли не нашли подходѝщий логин, отправлѝем пользователѝ регеѝтрироватьѝѝ
 		regMenu();
 }
 
@@ -96,8 +96,8 @@ void Chat::regMenu()
 {
 	cout << "\tWelcome in menu registration.\nFor exit the menu enter word 'exit'.\nChoose login and enter it:" << endl;
 
-	bool exitFlag = true; // ���� ��� ������ �� ������
-	std::string buf; //�������� ���������� ��� �����!!!
+	bool exitFlag = true; // флаг длѝ выхода из циклов
+	std::string buf; //буфернаѝ переменнаѝ длѝ ввода!!!
 	
 	do
 	{
@@ -111,12 +111,12 @@ void Chat::regMenu()
 		}
 		else
 		{
-			for (size_t i = 0; i < users_.size(); ++i) //�������� ��������� ������ � ����
+			for (size_t i = 0; i < users_.size(); ++i) //проверка введеного логина в базе
 			{
 				if (buf == users_.at(i).getLogin())
 				{
 					cout << "There is already a user with this login. Try again:" << endl;
-					buf.clear(); //������� �������� ����������
+					buf.clear(); //очищаем буферную переменную
 					exitFlag = true;
 					break;
 				}
@@ -130,7 +130,7 @@ void Chat::regMenu()
 
 	} while (exitFlag);
 
-	User newUser(buf); //�������� ������������ !!!
+	User newUser(buf); //буферный пользователь !!!
 	
 	cout << "Okey. Your login: " << newUser.getLogin() << endl;
 	cout << "Choose security password:" << endl;
@@ -145,12 +145,12 @@ void Chat::regMenu()
 
 	newUser.setName(buf);
 
-	users_.push_back(newUser); // �������� ������ ������������ � ����
+	users_.push_back(newUser); // добавили нового пользователѝ в базу
 
 	cout << "Congratulations, you have successfully registered " << endl;
 
-	indexUser = users_.size() - 1; // ������������ � ���� 
-	checkPassw_ = true; //������ ��������
+	indexUser = users_.size() - 1; // пользователь в ѝети 
+	checkPassw_ = true; //пароль проверен
 	
 }
 
@@ -232,7 +232,7 @@ void Chat::sendMessage()
 	Message newMessage(users_.at(indexUser).getLogin(), users_.at(choose).getLogin(), buf);
 
 	messages_.push_back(newMessage);
-		
+
 	cout << "Message sent" << endl;
 
 	ThreadLogger logFile("logs.txt");
@@ -241,6 +241,7 @@ void Chat::sendMessage()
 
 void Chat::readMessage()
 {
+
 	cout << "Your incoming messages:" << endl;
 	
 	for (size_t i = 0; i < messages_.size(); ++i)

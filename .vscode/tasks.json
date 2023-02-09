@@ -9,7 +9,11 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenameNoExtension}.exe",
+                "-Wall", // Включить дополнительные предупреждения
+                "-static-libgcc", // статическая ссылка libgcc, обычно добавляется
+                "-fexec-charset = GBK",
+                "-std = c17"
             ],
             "options": {
                 "cwd": "${fileDirname}"
